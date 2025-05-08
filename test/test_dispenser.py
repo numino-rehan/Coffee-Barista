@@ -1,6 +1,6 @@
 import pytest
-from core.dispenser import Dispenser
-from core.inventory import Inventory
+from model.dispenser import Dispenser
+from model.inventory import Inventory
 from config.constants import DRINK_MENU,MAX_STOCK
 from utils.exceptions import OutOfStockError
 

@@ -1,7 +1,7 @@
-from core.inventory import Inventory
-from core.menu import Menu
-from core.dispenser import Dispenser
-from core.command_processor import CommandProcessor
+from model.inventory import Inventory
+from model.menu import Menu
+from model.dispenser import Dispenser
+from model.command_processor import CommandProcessor
 from utils.exceptions import CoffeeMachineError
 from colorama import Fore, Style, init
 

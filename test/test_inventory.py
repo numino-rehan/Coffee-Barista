@@ -1,4 +1,4 @@
-from core.inventory import Inventory
+from model.inventory import Inventory
 import pytest
 from config.constants import MAX_STOCK
 from utils.exceptions import IngredientMismatchError, OutOfStockError
