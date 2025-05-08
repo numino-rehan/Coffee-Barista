@@ -1,6 +1,6 @@
 from config.constants import INGREDIENT_PRICES, MAX_STOCK
 from utils.exceptions import OutOfStockError, IngredientMismatchError
-
+from colorama import Fore, Style
 
 class Inventory:
     def __init__(self):
@@ -30,3 +30,9 @@ class Inventory:
     def get_stock(self) -> dict:
         """Return a copy of current stock levels."""
         return self.stock.copy()
+    
+    def display_inventory(self):
+        print(Fore.MAGENTA + Style.BRIGHT + "\nINVENTORY:")
+        for item, qty in self.get_stock().items():
+            print(f"{item} {qty}")
+        print("")
