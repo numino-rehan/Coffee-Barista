@@ -1,5 +1,4 @@
-#  Horse Betting Machine
-
+#  Coffee Barista Problem
 A  terminal-based Coffee  machine simulation in Python.
 
 ---
