@@ -1,10 +1,10 @@
-from .command_processor_exception import InvalidCommandError
-from .dispenser_exception import OutOfStockError
-from .inventory_exception import IngredientMismatchError
+from .command_processor_exception import InvalidCommandException
+from .dispenser_exception import OutOfStockException
+from .inventory_exception import IngredientMismatchException
 
 
 __all__ = [
-    "InvalidCommandError",
-    "OutOfStockError",
-    "IngredientMismatchError",
+    "InvalidCommandException",
+    "OutOfStockException",
+    "IngredientMismatchException",
 ]

@@ -1,5 +1,5 @@
 from config.constants import DRINK_MENU, INGREDIENT_PRICES
-from exceptions import (IngredientMismatchError)
+from exceptions import (IngredientMismatchException)
 
 from colorama import Fore, Style
 
@@ -19,7 +19,7 @@ class Menu:
             try:
                 cost = self._calculate_cost(self.drink_menu[drink])
                 available = self.inventory.has_ingredients(self.drink_menu[drink])
-            except IngredientMismatchError as e:
+            except IngredientMismatchException as e:
                 cost = 0
                 available = False
             menu[drink] = {
@@ -33,7 +33,7 @@ class Menu:
         try:
             return sum(INGREDIENT_PRICES[ing] * qty for ing, qty in recipe.items())
         except KeyError as e:
-            raise IngredientMismatchError(str(e))
+            raise IngredientMismatchException(str(e))
 
     def get_menu(self):
         """Return the current menu data."""

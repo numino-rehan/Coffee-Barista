@@ -1,8 +1,8 @@
 import pytest
-from model.dispenser import Dispenser
-from model.inventory import Inventory
+from model import (Inventory,Menu,Dispenser,CommandProcessor)
+
 from config.constants import DRINK_MENU,MAX_STOCK
-from exceptions import (InvalidCommandError, OutOfStockError)
+from exceptions import (InvalidCommandException, OutOfStockException)
 
 
 def test_dispense_success(capfd):
@@ -26,7 +26,7 @@ def test_dispense_out_of_stock():
     dispenser = Dispenser(inventory=inventory)
     drink_name = "Coffee"
 
-    with pytest.raises(OutOfStockError) as exc_info:
+    with pytest.raises(OutOfStockException) as exc_info:
         dispenser.dispense(drink_name=drink_name)
     
     assert str(exc_info.value) == f"Out of stock: {drink_name}"

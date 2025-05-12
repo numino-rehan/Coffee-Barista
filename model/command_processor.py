@@ -1,7 +1,7 @@
 import sys
 from colorama import Fore
 
-from exceptions import (InvalidCommandError, OutOfStockError)
+from exceptions import (InvalidCommandException)
 
 from command_core import (CommandContext,CommandRegistry)
 from command import (QuitCommand, RestockCommand, DispenseCommand)
@@ -31,7 +31,7 @@ class CommandProcessor:
             commandObj = self.registry.get(command)
 
             if not commandObj:
-                raise InvalidCommandError(command)
+                raise InvalidCommandException(command)
             if command.isdigit():
                 args = self.menu.id_to_drink[(command)]
             else:

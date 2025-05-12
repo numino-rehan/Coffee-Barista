@@ -1,5 +1,5 @@
 from config.constants import INGREDIENT_PRICES, MAX_STOCK,COMMAND_LIST
-from exceptions import (InvalidCommandError, OutOfStockError,IngredientMismatchError)
+from exceptions import (InvalidCommandException, OutOfStockException,IngredientMismatchException)
 
 from colorama import Fore, Style
 
@@ -16,7 +16,7 @@ class Inventory:
         """Check if enough ingredients are available for a recipe."""
         for ing, qty in recipe.items():
             if ing not in self.stock:
-                raise IngredientMismatchError(ing)
+                raise IngredientMismatchException(ing)
             if self.stock[ing] < qty:
                 return False
         return True
@@ -24,7 +24,7 @@ class Inventory:
     def deduct_ingredients(self, recipe: dict):
         """Deduct the required ingredients for a recipe from inventory."""
         if not self.has_ingredients(recipe):
-            raise OutOfStockError()
+            raise OutOfStockException()
         for ing, qty in recipe.items():
             self.stock[ing] -= qty
 

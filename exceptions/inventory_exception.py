@@ -1,8 +1,8 @@
-class InventoryError(Exception):
+class InventoryException(Exception):
     """Base class for inventory-related errors."""
     pass
 
 
-class IngredientMismatchError(InventoryError):
+class IngredientMismatchException(InventoryException):
     def __init__(self, ingredient):
         super().__init__(f"Unknown ingredient in inventory: {ingredient}")

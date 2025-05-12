@@ -1,7 +1,5 @@
-from model.inventory import Inventory
-from model.menu import Menu
-from model.dispenser import Dispenser
-from model.command_processor import CommandProcessor
+
+from model import (Inventory,Menu,Dispenser,CommandProcessor)
 from colorama import Fore, Style, init
 
 init(autoreset=True)

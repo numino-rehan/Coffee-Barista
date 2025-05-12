@@ -1,9 +1,9 @@
-class DispenserError(Exception):
+class DispenserException(Exception):
     """Base class for dispenser-related errors."""
     pass
 
 
-class OutOfStockError(DispenserError):
+class OutOfStockException(DispenserException):
     def __init__(self, drink_name=None):
         msg = f"Out of stock" + (f": {drink_name}" if drink_name else "")
         super().__init__(msg)
