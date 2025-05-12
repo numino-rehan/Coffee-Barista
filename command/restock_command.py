@@ -1,4 +1,4 @@
-from .base_command import BaseCommand
+from command_core import BaseCommand
 
 class RestockCommand(BaseCommand):
     def execute(self, args, context):

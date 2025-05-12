@@ -1,5 +1,5 @@
 import sys
-from .base_command import BaseCommand
+from command_core import BaseCommand
 
 class DispenseCommand(BaseCommand):
     def execute(self, args, context):

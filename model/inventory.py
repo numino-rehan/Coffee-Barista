@@ -1,6 +1,6 @@
 from config.constants import INGREDIENT_PRICES, MAX_STOCK
-from exceptions.dispenser_exception import OutOfStockError
-from exceptions.inventory_exception import IngredientMismatchError
+from exceptions import (InvalidCommandError, OutOfStockError,IngredientMismatchError)
+
 from colorama import Fore, Style
 
 class Inventory:

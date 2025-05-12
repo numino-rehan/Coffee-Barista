@@ -1,5 +1,6 @@
 from config.constants import DRINK_MENU, INGREDIENT_PRICES
-from exceptions.inventory_exception import IngredientMismatchError
+from exceptions import (IngredientMismatchError)
+
 from colorama import Fore, Style
 
 class Menu:
