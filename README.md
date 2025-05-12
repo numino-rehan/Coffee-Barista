@@ -15,7 +15,7 @@
 1. **Clone & Enter Project**  
    ```bash
    git clone <repo-name>
-   cd coffeebar
+   cd coffee-barista
    ```
 
 2. **Install Dependencies with Poetry**  
