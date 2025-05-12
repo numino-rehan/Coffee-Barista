@@ -5,6 +5,7 @@ from exceptions import (InvalidCommandError, OutOfStockError)
 
 from command_core import (CommandContext,CommandRegistry)
 from command import (QuitCommand, RestockCommand, DispenseCommand)
+from config.constants import COMMAND_LIST
 
 class CommandProcessor:
     def __init__(self, inventory, menu, dispenser):
@@ -16,8 +17,8 @@ class CommandProcessor:
 
         # Setup command registry
         self.registry = CommandRegistry()
-        self.registry.register("q", QuitCommand())
-        self.registry.register("r", RestockCommand())
+        self.registry.register(COMMAND_LIST.get("quit"), QuitCommand())
+        self.registry.register(COMMAND_LIST.get("restock"), RestockCommand())
         [self.registry.register(str(key), DispenseCommand()) for key in self.menu.id_to_drink.keys()]
         
 

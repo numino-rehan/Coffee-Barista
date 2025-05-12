@@ -21,3 +21,9 @@ DRINK_MENU = {
 }
 
 MAX_STOCK = 10
+
+
+COMMAND_LIST = {
+    "quit": "q",
+    "restock": "r",
+}
