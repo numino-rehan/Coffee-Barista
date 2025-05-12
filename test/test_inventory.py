@@ -1,8 +1,9 @@
 from model.inventory import Inventory
 import pytest
 from config.constants import MAX_STOCK
-from utils.exceptions import IngredientMismatchError, OutOfStockError
 
+from exceptions.dispenser_exception import OutOfStockError
+from exceptions.inventory_exception import IngredientMismatchError
 
 def test_initial_stock():
     inventory = Inventory()

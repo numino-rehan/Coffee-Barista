@@ -1,6 +1,6 @@
 from config.constants import DRINK_MENU
 from utils.helper import log_and_print
-from utils.exceptions import OutOfStockError
+from exceptions.dispenser_exception import OutOfStockError
 
 
 class Dispenser:

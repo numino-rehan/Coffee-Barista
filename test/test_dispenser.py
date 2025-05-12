@@ -2,7 +2,7 @@ import pytest
 from model.dispenser import Dispenser
 from model.inventory import Inventory
 from config.constants import DRINK_MENU,MAX_STOCK
-from utils.exceptions import OutOfStockError
+from exceptions.dispenser_exception import OutOfStockError
 
 
 def test_dispense_success(capfd):
