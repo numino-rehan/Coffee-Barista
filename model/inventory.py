@@ -33,7 +33,11 @@ class Inventory:
         return self.stock.copy()
     
     def display_inventory(self):
-        print(Fore.MAGENTA + Style.BRIGHT + "\nINVENTORY:")
+        print(self)
+        print()
+
+    def __str__(self):
+        lines = [Fore.MAGENTA + Style.BRIGHT + "\nINVENTORY:" + Style.RESET_ALL]
         for item, qty in self.get_stock().items():
-            print(f"{item} {qty}")
-        print("")
+            lines.append(f"{item} {qty}")
+        return "\n".join(lines)
