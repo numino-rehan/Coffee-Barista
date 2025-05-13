@@ -28,12 +28,12 @@
 
 ### **Start the Coffee Machine**  
 ```bash
-poetry run python main.py
+poetry run poe start
 ```
 
 ### **Run Tests**  
 ```bash
-poetry run python -m pytest test/
+poetry run poe test
 ```
 
 
