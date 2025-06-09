@@ -13,7 +13,7 @@ from exceptions import (
 )
 from models import Menu, Dispenser, Inventory
 from services.command_processor import CommandProcessor
-from utils.loger_config import setup_logger
+from utils import setup_logger
 
 logger = setup_logger("main")
 

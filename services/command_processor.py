@@ -4,8 +4,7 @@ from exceptions import InvalidCommandException
 from command_core import CommandContext, CommandRegistry
 from command import QuitCommand, RestockCommand, DispenseCommand
 from config.constants import COMMAND_LIST
-from utils.decorators import log_execution
-from utils.loger_config import setup_logger
+from utils import setup_logger,log_execution
 from models import Inventory, Menu, Dispenser
 
 logger = setup_logger("command_processor")

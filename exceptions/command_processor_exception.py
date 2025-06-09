@@ -1,5 +1,5 @@
 from colorama import Fore, Style
-from utils.loger_config import setup_logger
+from utils import setup_logger
 
 logger = setup_logger("command_processor_exception")
 

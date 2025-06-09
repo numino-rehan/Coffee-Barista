@@ -1,7 +1,7 @@
 from typing import Dict, Optional
 
 from command_core import BaseCommand
-from utils.loger_config import setup_logger
+from utils import setup_logger
 
 logger = setup_logger("registry_command")
 
