@@ -1,7 +1,8 @@
 import sys
+from colorama import Fore, Style, init
+
 from command_core import CommandContext, BaseCommand
 from utils import setup_logger
-from colorama import Fore, Style, init
 
 init(autoreset=True)
 

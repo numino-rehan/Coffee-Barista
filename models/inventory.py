@@ -1,6 +1,7 @@
 from typing import Dict
 
 from colorama import Fore, Style
+
 from config.constants import INGREDIENT_PRICES, MAX_STOCK
 from exceptions import OutOfStockException, IngredientMismatchException
 from utils import setup_logger, log_execution
