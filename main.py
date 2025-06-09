@@ -29,19 +29,17 @@ def run_coffee_machine():
 
     Logs errors encountered during command processing.
     """
-    inventory = Inventory()
-    menu = Menu(inventory)
-    dispenser = Dispenser(inventory)
-    processor = CommandProcessor(inventory, menu, dispenser)
+
+    processor = CommandProcessor()
 
     logger.info("Welcome to the Coffee Machine!")
 
     while True:
         try:
             print("\nCurrent Inventory:\n")
-            inventory.display_inventory()
+            processor.inventory.display_inventory()
             print("\nAvailable Drinks:\n")
-            menu.display_menu()
+            processor.menu.display_menu()
             command = input(
                 "Enter command (ID to order, 'r' to restock, 'q' to quit): "
             )

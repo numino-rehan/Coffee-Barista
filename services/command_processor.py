@@ -22,7 +22,7 @@ class CommandProcessor:
         registry (CommandRegistry): Registry mapping command keywords to command objects.
     """
 
-    def __init__(self, inventory: Inventory, menu: Menu, dispenser: Dispenser) -> None:
+    def __init__(self) -> None:
         """
         Initialize the CommandProcessor with inventory, menu, and dispenser.
 
@@ -33,12 +33,12 @@ class CommandProcessor:
             menu (Menu): Menu instance providing drink options.
             dispenser (Dispenser): Dispenser instance to dispense drinks.
         """
-        self.inventory = inventory
-        self.menu = menu
-        self.dispenser = dispenser
+        self.inventory = Inventory()
+        self.menu = Menu(self.inventory)
+        self.dispenser = Dispenser(self.inventory)
 
         self.context: CommandContext = CommandContext(
-            inventory, menu, dispenser)
+            self.inventory, self. menu, self.dispenser)
 
         self.registry: CommandRegistry = CommandRegistry()
 
