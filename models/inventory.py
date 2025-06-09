@@ -3,8 +3,7 @@ from typing import Dict
 from colorama import Fore, Style
 from config.constants import INGREDIENT_PRICES, MAX_STOCK
 from exceptions import OutOfStockException, IngredientMismatchException
-from utils.decorators import log_execution
-from utils.loger_config import setup_logger
+from utils import setup_logger,log_execution
 
 logger = setup_logger("inventory")
 
@@ -31,6 +30,7 @@ class Inventory:
         self.stock = {ingredient: MAX_STOCK for ingredient in self.stock}
         logger.info(
             Fore.GREEN + "Inventory restocked to max levels." + Style.RESET_ALL)
+        print(Fore.GREEN + "Inventory restocked to max levels." + Style.RESET_ALL)
 
     def has_ingredients(self, recipe: Dict[str, int]) -> bool:
         """

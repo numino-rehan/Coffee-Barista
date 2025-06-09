@@ -1,5 +1,5 @@
 
-from utils.loger_config import setup_logger
+from utils import setup_logger
 from models.inventory import Inventory
 from models.menu import Menu
 from models.dispenser import Dispenser

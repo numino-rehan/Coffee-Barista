@@ -2,9 +2,8 @@ from typing import Dict, Optional
 
 from config.constants import DRINK_MENU, INGREDIENT_PRICES
 from exceptions import IngredientMismatchException
-from utils.decorators import log_execution
 from .inventory import Inventory
-from utils.loger_config import setup_logger
+from utils import setup_logger,log_execution
 
 logger = setup_logger("menu")
 

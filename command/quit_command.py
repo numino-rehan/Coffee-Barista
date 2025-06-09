@@ -1,6 +1,6 @@
 import sys
 from command_core import CommandContext, BaseCommand
-from utils.loger_config import setup_logger
+from utils import setup_logger
 
 logger = setup_logger("quit_command")
 

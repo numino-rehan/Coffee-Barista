@@ -1,4 +1,4 @@
-from utils.loger_config import setup_logger
+from utils import setup_logger
 from command_core.command_context import CommandContext
 
 logger = setup_logger("base_command")
