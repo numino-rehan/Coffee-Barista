@@ -1,4 +1,4 @@
-from model import (Inventory)
+from models import (Inventory)
 import pytest
 from config.constants import MAX_STOCK
 

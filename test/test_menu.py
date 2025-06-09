@@ -1,5 +1,5 @@
 import pytest
-from model import Inventory, Menu
+from models import Inventory, Menu
 from config.constants import DRINK_MENU, INGREDIENT_PRICES
 
 

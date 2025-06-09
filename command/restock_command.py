@@ -1,6 +1,28 @@
-from command_core import BaseCommand
+from command_core import CommandContext, BaseCommand
+from utils.loger_config import setup_logger
+
+logger = setup_logger("restock_command")
+
 
 class RestockCommand(BaseCommand):
-    def execute(self, args, context):
+    """
+    Command to restock all ingredients in the inventory.
+
+    When executed, this command refills the inventory to maximum stock levels
+    and refreshes the menu availability accordingly.
+    """
+
+    def execute(self, args: str, context: CommandContext):
+        """
+        Execute the restock command.
+
+        Args:
+            args: Command arguments (unused).
+            context: Shared command context containing inventory and menu.
+
+        Logs the restocking action and refreshes the menu afterward.
+        """
+        logger.info("Executing restock command.")
         context.inventory.restock()
         context.menu.refresh()
+        logger.info("Restock command executed successfully.")
