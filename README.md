@@ -1,33 +1,59 @@
-#  Coffee Barista Problem
-A  terminal-based Coffee  machine simulation in Python.
+# Coffee Barista Machine - Python Terminal App  
+
+☕ A terminal-based coffee machine simulator with Poetry dependency management  
 
 ---
 
-## 🛠 How to Run
+## 🚀 **Getting Started**  
 
-### ▶ Prerequisites
+### **Prerequisites**  
+- Python 3.8+  
+- [Poetry](https://python-poetry.org/) (recommended)  
 
-- Python 3.x installed  
-- Python added to your system's PATH (on Windows)
+### **Installation**  
 
-### ▶ Running the Script
+1. **Clone & Enter Project**  
+   ```bash
+   git clone <repo-name>
+   cd coffee-barista
+   ```
 
-1. Open a terminal or command prompt  
-2. Navigate to the project directory  
-3. Install required dependencies:
+2. **Install Dependencies with Poetry**  
+   ```bash
+   poetry install
+   ```
 
+
+## ▶ **Running the App**  
+
+### **Start the Coffee Machine**  
 ```bash
-pip install -r requirements.txt
+poetry run poe start
 ```
 
-4. Run the Script
-
-``` bash
-python main.py
+### **Run Tests**  
+```bash
+poetry run poe test
 ```
 
-5. Testing Instruction
 
+### **Adding New Dependencies**  
 ```bash
-pytest -s
+poetry add package-name          # Production dependency
+```
+
+---
+
+## ☕ **Features**  
+- Interactive terminal interface  
+- Multiple coffee recipes (Espresso, Latte, Cappuccino)  
+- Resource management (water, milk, coffee beans)  
+- Coin-operated payment system  
+
+---
+
+## 🤖 **Testing**  
+Run all tests:  
+```bash
+poetry run pytest -v
 ```

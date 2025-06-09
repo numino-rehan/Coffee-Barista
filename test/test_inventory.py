@@ -1,7 +1,8 @@
-from model.inventory import Inventory
+from models import (Inventory)
 import pytest
 from config.constants import MAX_STOCK
-from utils.exceptions import IngredientMismatchError, OutOfStockError
+
+from exceptions import (InvalidCommandException, OutOfStockException,IngredientMismatchException)
 
 
 def test_initial_stock():
@@ -21,7 +22,7 @@ def test_has_ingredients_mismatch_error():
     inventory = Inventory()
     inventory.stock = {"coffee": 1, "milk": 1}
     recipe = {"foam": 2, "milk": 1}
-    with pytest.raises(IngredientMismatchError) as exc_info:
+    with pytest.raises(IngredientMismatchException) as exc_info:
         inventory.has_ingredients(recipe)
     print(f"INfo {exc_info.value}")
     assert "foam" in str(exc_info.value)
@@ -45,7 +46,7 @@ def test_deduct_ingredients_out_of_stock_error():
     inventory = Inventory()
     inventory.stock = {"coffee": 1}
     recipe = {"coffee": 3}
-    with pytest.raises(OutOfStockError):
+    with pytest.raises(OutOfStockException):
         inventory.deduct_ingredients(recipe)
 
 def test_restock_resets_to_max():
