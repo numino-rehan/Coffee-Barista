@@ -3,7 +3,7 @@ from typing import Dict, Optional
 from config.constants import DRINK_MENU, INGREDIENT_PRICES
 from exceptions import IngredientMismatchException
 from .inventory import Inventory
-from utils import setup_logger,log_execution
+from utils import setup_logger, log_execution
 
 logger = setup_logger("menu")
 
