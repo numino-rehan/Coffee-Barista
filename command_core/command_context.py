@@ -1,8 +1,5 @@
-
 from utils import setup_logger
-from models.inventory import Inventory
-from models.menu import Menu
-from models.dispenser import Dispenser
+from models import Inventory, Menu, Dispenser
 
 logger = setup_logger("command_context")
 
@@ -26,8 +23,7 @@ class CommandContext:
             menu (Menu): Menu instance.
             dispenser (Dispenser): Dispenser instance.
         """
-        logger.info(
-            "Initializing CommandContext with inventory, menu, and dispenser.")
+        logger.info("Initializing CommandContext with inventory, menu, and dispenser.")
         self.inventory = inventory
         self.menu = menu
         self.dispenser = dispenser

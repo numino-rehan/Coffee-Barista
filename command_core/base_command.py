@@ -1,17 +1,17 @@
+from abc import ABC, abstractmethod
+
 from utils import setup_logger
 from command_core.command_context import CommandContext
 
 logger = setup_logger("base_command")
 
 
-class BaseCommand:
+class BaseCommand(ABC):
     """
     Abstract base class for all commands.
-
-    Each subclass must implement the execute method to define
-    the specific command behavior.
     """
 
+    @abstractmethod
     def execute(self, args: str, context: CommandContext) -> None:
         """
         Execute the command with given arguments and context.

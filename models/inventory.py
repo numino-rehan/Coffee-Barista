@@ -1,9 +1,10 @@
 from typing import Dict
 
 from colorama import Fore, Style
+
 from config.constants import INGREDIENT_PRICES, MAX_STOCK
 from exceptions import OutOfStockException, IngredientMismatchException
-from utils import setup_logger,log_execution
+from utils import setup_logger, log_execution
 
 logger = setup_logger("inventory")
 
@@ -21,7 +22,7 @@ class Inventory:
             ingredient: MAX_STOCK for ingredient in sorted(INGREDIENT_PRICES)
         }
         logger.info("Inventory initialized with max stock levels.")
-    
+
     @log_execution
     def restock(self) -> None:
         """
@@ -86,9 +87,11 @@ class Inventory:
 
     def display_inventory(self) -> None:
         """
-        Log the current inventory stock.
+        Log the current inventory stock and optionally print for user.
         """
         logger.info(self.__str__())
+        # Uncomment below line to also print inventory to user console
+        # print(self.__str__())
 
     def __str__(self) -> str:
         """

@@ -1,5 +1,10 @@
+from colorama import Fore, Style, init
+
+
 from command_core import CommandContext, BaseCommand
 from utils import setup_logger
+
+init(autoreset=True)  # Automatically reset colors after each print
 
 logger = setup_logger("dispense_command")
 
@@ -21,8 +26,13 @@ class DispenseCommand(BaseCommand):
             context (CommandContext): The shared context containing inventory, menu, and dispenser.
 
         Logs the action and refreshes the menu after dispensing.
+        Prints colored user notifications.
         """
         logger.info(f"Executing dispense command for: {args}")
+        print(f"{Fore.CYAN}Dispensing drink: {args}...{Style.RESET_ALL}\n")
+
         context.dispenser.dispense(args)
         context.menu.refresh()
+
         logger.info("Dispense command executed successfully.")
+        print(f"{Fore.GREEN}Drink dispensed successfully.{Style.RESET_ALL}\n")

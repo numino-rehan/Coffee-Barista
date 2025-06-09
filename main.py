@@ -5,11 +5,12 @@ Entry point for the Coffee Machine CLI application.
 Initializes the inventory, menu, dispenser, and command processor,
 and runs an interactive command loop to process user commands.
 """
+
 from exceptions import (
     OutOfStockException,
     DrinkNotFoundException,
     IngredientMismatchException,
-    InvalidCommandException
+    InvalidCommandException,
 )
 from models import Menu, Dispenser, Inventory
 from services.command_processor import CommandProcessor
@@ -28,21 +29,20 @@ def run_coffee_machine():
 
     Logs errors encountered during command processing.
     """
-    inventory = Inventory()
-    menu = Menu(inventory)
-    dispenser = Dispenser(inventory)
-    processor = CommandProcessor(inventory, menu, dispenser)
+
+    processor = CommandProcessor()
 
     logger.info("Welcome to the Coffee Machine!")
 
     while True:
         try:
             print("\nCurrent Inventory:\n")
-            inventory.display_inventory()
+            processor.inventory.display_inventory()
             print("\nAvailable Drinks:\n")
-            menu.display_menu()
+            processor.menu.display_menu()
             command = input(
-                "Enter command (ID to order, 'r' to restock, 'q' to quit): ")
+                "Enter command (ID to order, 'r' to restock, 'q' to quit): "
+            )
             processor.process(command)
         except OutOfStockException as e:
             print(f"{e}\n")
@@ -52,8 +52,11 @@ def run_coffee_machine():
             print(f"{e}\n")
         except IngredientMismatchException as e:
             print(f"{e}\n")
+        except SystemExit:
+            print("Exiting Coffee Machine. Goodbye!")
+            break
         except Exception as error:
-            print(f"{error}\n")
+            print(f"Unexpected error: {error}\n")
 
 
 if __name__ == "__main__":
