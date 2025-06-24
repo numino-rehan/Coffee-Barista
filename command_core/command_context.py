@@ -1,5 +1,5 @@
+from models import Dispenser, Inventory, Menu
 from utils import setup_logger
-from models import Inventory, Menu, Dispenser
 
 logger = setup_logger("command_context")
 

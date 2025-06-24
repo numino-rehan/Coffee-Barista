@@ -1,8 +1,8 @@
 import pytest
 
-from models import (Inventory, Dispenser)
 from config.constants import DRINK_MENU, MAX_STOCK
-from exceptions import (OutOfStockException)
+from exceptions import OutOfStockException
+from models import Dispenser, Inventory
 
 
 def test_dispense_success(capfd):

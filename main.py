@@ -6,13 +6,8 @@ Initializes the inventory, menu, dispenser, and command processor,
 and runs an interactive command loop to process user commands.
 """
 
-from exceptions import (
-    OutOfStockException,
-    DrinkNotFoundException,
-    IngredientMismatchException,
-    InvalidCommandException,
-)
-from models import Menu, Dispenser, Inventory
+from exceptions import (DrinkNotFoundException, IngredientMismatchException,
+                        InvalidCommandException, OutOfStockException)
 from services.command_processor import CommandProcessor
 from utils import setup_logger
 

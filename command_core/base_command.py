@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 
-from utils import setup_logger
 from command_core.command_context import CommandContext
+from utils import setup_logger
 
 logger = setup_logger("base_command")
 
