@@ -1,6 +1,5 @@
-import pytest
-from models import Inventory, Menu
 from config.constants import DRINK_MENU, INGREDIENT_PRICES
+from models import Inventory, Menu
 
 
 def test_menu_structure_and_prices():

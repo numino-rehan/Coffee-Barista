@@ -1,11 +1,11 @@
 from typing import Optional
 
-from exceptions import InvalidCommandException
+from command import DispenseCommand, QuitCommand, RestockCommand
 from command_core import CommandContext, CommandRegistry
-from command import QuitCommand, RestockCommand, DispenseCommand
 from config.constants import COMMAND_LIST
-from utils import setup_logger, log_execution
-from models import Inventory, Menu, Dispenser
+from exceptions import InvalidCommandException
+from models import Dispenser, Inventory, Menu
+from utils import log_execution, setup_logger
 
 logger = setup_logger("command_processor")
 

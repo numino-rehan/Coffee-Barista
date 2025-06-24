@@ -1,8 +1,10 @@
 from colorama import Fore, Style
+
 from config.constants import DRINK_MENU
-from exceptions import OutOfStockException, DrinkNotFoundException
+from exceptions import DrinkNotFoundException, OutOfStockException
+from utils import log_execution, setup_logger
+
 from .inventory import Inventory
-from utils import setup_logger, log_execution
 
 logger = setup_logger("dispenser")
 

@@ -9,6 +9,7 @@ Now enhanced with colorama support for colored log levels and a blank line after
 """
 
 import logging
+
 from colorama import Fore, Style, init
 
 # Initialize colorama (for Windows compatibility)

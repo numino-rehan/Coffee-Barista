@@ -3,8 +3,8 @@ from typing import Dict
 from colorama import Fore, Style
 
 from config.constants import INGREDIENT_PRICES, MAX_STOCK
-from exceptions import OutOfStockException, IngredientMismatchException
-from utils import setup_logger, log_execution
+from exceptions import IngredientMismatchException, OutOfStockException
+from utils import log_execution, setup_logger
 
 logger = setup_logger("inventory")
 
