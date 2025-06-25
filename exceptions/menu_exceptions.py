@@ -1,4 +1,3 @@
-from colorama import Fore, Style
 
 from utils import setup_logger
 
@@ -14,6 +13,6 @@ class MenuException(Exception):
 class DrinkNotFoundException(MenuException):
     """Exception raised when a drink is not found in the menu."""
 
-    def __init__(self, drink_name):
-        msg = Fore.RED + f"Drink '{drink_name}' not found in menu." + Style.RESET_ALL
-        super().__init__(msg)
+    def __init__(self, message):
+        self.message = message
+        super().__init__(self.message)

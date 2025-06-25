@@ -1,4 +1,3 @@
-from colorama import Fore, Style
 
 from utils import setup_logger
 
@@ -13,6 +12,6 @@ class InventoryException(Exception):
 class IngredientMismatchException(InventoryException):
     """Exception raised when there is a mismatch in ingredient availability."""
 
-    def __init__(self, ingredient):
-        msg = Fore.RED + f"{ingredient}" + Style.RESET_ALL
-        super().__init__(msg)
+    def __init__(self, message):
+        self.message = message
+        super().__init__(self.message)

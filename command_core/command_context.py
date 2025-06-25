@@ -23,7 +23,21 @@ class CommandContext:
             menu (Menu): Menu instance.
             dispenser (Dispenser): Dispenser instance.
         """
-        logger.info("Initializing CommandContext with inventory, menu, and dispenser.")
         self.inventory = inventory
         self.menu = menu
         self.dispenser = dispenser
+
+        logger.info(
+            f"CommandContext initialized with: "
+            f"Inventory={inventory.__class__.__name__}, "
+            f"Menu={menu.__class__.__name__}, "
+            f"Dispenser={dispenser.__class__.__name__}"
+        )
+
+    def __str__(self) -> str:
+        return (
+            f"CommandContext("
+            f"inventory={self.inventory.__class__.__name__}, "
+            f"menu={self.menu.__class__.__name__}, "
+            f"dispenser={self.dispenser.__class__.__name__})"
+        )

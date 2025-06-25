@@ -1,4 +1,3 @@
-from colorama import Fore, Style
 
 from utils import setup_logger
 
@@ -12,6 +11,6 @@ class DispenserException(Exception):
 
 class OutOfStockException(DispenserException):
     """Exception raised when a requested drink is out of stock."""
-    def __init__(self, drink_name=None):
-        msg = Fore.RED + "Out of stock" + (f": {drink_name}" if drink_name else "") + Style.RESET_ALL
-        super().__init__(msg)
+    def __init__(self, message):
+        self.message = message
+        super().__init__(self.message)

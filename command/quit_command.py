@@ -3,7 +3,8 @@ import sys
 from colorama import Fore, Style, init
 
 from command_core import BaseCommand, CommandContext
-from utils import setup_logger
+from utils import (log_and_handle_errors,  
+                   setup_logger)
 
 init(autoreset=True)
 
@@ -17,6 +18,7 @@ class QuitCommand(BaseCommand):
     When executed, this command will terminate the program immediately.
     """
 
+    @log_and_handle_errors("Error executing quit command")
     def execute(self, args: str, context: CommandContext):
         """
         Execute the quit command.
@@ -29,4 +31,4 @@ class QuitCommand(BaseCommand):
         """
         logger.info("Executing quit command.")
         print(f"{Fore.YELLOW}Exiting the coffee machine. Goodbye!{Style.RESET_ALL}")
-        sys.exit()
+        sys.exit(0)

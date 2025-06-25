@@ -2,7 +2,7 @@ from colorama import Fore, Style
 
 from config.constants import DRINK_MENU
 from exceptions import DrinkNotFoundException, OutOfStockException
-from utils import log_execution, setup_logger
+from utils import log_and_handle_errors, setup_logger
 
 from .inventory import Inventory
 
@@ -23,7 +23,7 @@ class Dispenser:
         """
         self.inventory = inventory
 
-    @log_execution
+    @log_and_handle_errors("Failed to dispense drink")
     def dispense(self, drink_name: str):
         """
         Dispense a drink if the ingredients are available.
@@ -37,16 +37,15 @@ class Dispenser:
         """
         recipe = DRINK_MENU.get(drink_name)
         if not recipe:
-            logger.error(f"No recipe found for drink '{drink_name}'")
-            raise DrinkNotFoundException(drink_name)
+            message = f"No recipe found for drink '{drink_name}'"
+            logger.error(message)
+            raise DrinkNotFoundException(message)
 
         if not self.inventory.has_ingredients(recipe):
-            logger.error(f"Out of stock for drink '{drink_name}'")
-            raise OutOfStockException(drink_name)
+            message = f"Not enough ingredients to make '{drink_name}'"
+            logger.error(message)
+            raise OutOfStockException(message)
 
         self.inventory.deduct_ingredients(recipe)
         logger.info(f"Dispensing drink: {drink_name}")
-        logger.info(
-            Fore.GREEN + f"Successfully dispensed drink: {drink_name}" + Style.RESET_ALL)
-        print(Fore.GREEN +
-              f"Enjoy your {drink_name}!" + Style.RESET_ALL + "\n")
+        print(Fore.GREEN + f"Enjoy your {drink_name}!" + Style.RESET_ALL + "\n")

@@ -1,9 +1,10 @@
 from colorama import Fore, Style, init
 
 from command_core import BaseCommand, CommandContext
-from utils import setup_logger
+from utils import (log_and_handle_errors,  
+                   setup_logger)
 
-init(autoreset=True)  # Automatically reset colors after each print
+init(autoreset=True)  
 
 logger = setup_logger("dispense_command")
 
@@ -16,6 +17,7 @@ class DispenseCommand(BaseCommand):
     and then refreshes the menu to update availability based on inventory changes.
     """
 
+    @log_and_handle_errors("Error executing dispense command")
     def execute(self, args: str, context: CommandContext):
         """
         Execute the dispense command.

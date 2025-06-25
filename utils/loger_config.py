@@ -12,7 +12,6 @@ import logging
 
 from colorama import Fore, Style, init
 
-# Initialize colorama (for Windows compatibility)
 init(autoreset=True)
 
 
@@ -33,10 +32,8 @@ class ColorFormatter(logging.Formatter):
         color = self.LEVEL_COLORS.get(record.levelno, "")
         record.levelname = f"{color}{record.levelname}{Style.RESET_ALL}"
 
-        # Format the message with the original formatter
         formatted = super().format(record)
 
-        # Add a blank line after each log message for readability
         return formatted + "\n"
 
 
@@ -44,7 +41,6 @@ def setup_logger(name: str = __name__) -> logging.Logger:
     logger = logging.getLogger(name)
     logger.setLevel(logging.INFO)
 
-    # Prevent propagation to root logger
     logger.propagate = False
 
     if not logger.handlers:

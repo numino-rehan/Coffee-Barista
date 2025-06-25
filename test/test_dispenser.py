@@ -12,11 +12,9 @@ def test_dispense_success(capfd):
     drink_name = "Coffee"
     dispenser.dispense(drink_name)
 
-    # Check inventory deducted
     for ingredient, qty in DRINK_MENU[drink_name].items():
         assert inventory.stock[ingredient] == MAX_STOCK - qty
 
-    # Check log message
     out, _ = capfd.readouterr()
     print("-->", out)
     assert f"Enjoy your {drink_name}" in out
@@ -32,4 +30,4 @@ def test_dispense_out_of_stock():
         dispenser.dispense(drink_name=drink_name)
     print("--> ss", str(exc_info.value))
 
-    assert f"Out of stock: {drink_name}" in str(exc_info.value)
+    assert f"Not enough ingredients" in str(exc_info.value)

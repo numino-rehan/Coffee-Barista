@@ -4,7 +4,7 @@ from colorama import Fore, Style
 
 from config.constants import INGREDIENT_PRICES, MAX_STOCK
 from exceptions import IngredientMismatchException, OutOfStockException
-from utils import log_execution, setup_logger
+from utils import log_and_handle_errors, setup_logger
 
 logger = setup_logger("inventory")
 
@@ -23,16 +23,16 @@ class Inventory:
         }
         logger.info("Inventory initialized with max stock levels.")
 
-    @log_execution
+    @log_and_handle_errors("Failed to restock inventory")
     def restock(self) -> None:
         """
         Restock all ingredients to MAX_STOCK.
         """
         self.stock = {ingredient: MAX_STOCK for ingredient in self.stock}
-        logger.info(
-            Fore.GREEN + "Inventory restocked to max levels." + Style.RESET_ALL)
+        logger.info(Fore.GREEN + "Inventory restocked to max levels." + Style.RESET_ALL)
         print(Fore.GREEN + "Inventory restocked to max levels." + Style.RESET_ALL)
 
+    @log_and_handle_errors("Failed to check ingredient availability")
     def has_ingredients(self, recipe: Dict[str, int]) -> bool:
         """
         Check if enough ingredients are available for the given recipe.
@@ -48,17 +48,18 @@ class Inventory:
         """
         for ingredient, quantity in recipe.items():
             if ingredient not in self.stock:
-                logger.error(
-                    f"Ingredient mismatch: '{ingredient}' not found in inventory."
-                )
-                raise IngredientMismatchException(ingredient)
+                message = f"Ingredient '{ingredient}' not found in inventory."
+                logger.error(message)
+                raise IngredientMismatchException(message)
             if self.stock[ingredient] < quantity:
                 logger.warning(
-                    f"Insufficient stock for ingredient '{ingredient}': required {quantity}, available {self.stock[ingredient]}"
+                    f"Insufficient stock for '{ingredient}': "
+                    f"required={quantity}, available={self.stock[ingredient]}"
                 )
                 return False
         return True
 
+    @log_and_handle_errors("Failed to deduct ingredients")
     def deduct_ingredients(self, recipe: Dict[str, int]) -> None:
         """
         Deduct the required ingredients for a recipe from inventory.
@@ -70,12 +71,15 @@ class Inventory:
             OutOfStockException: If any ingredient is insufficient.
         """
         if not self.has_ingredients(recipe):
-            logger.error("Cannot deduct ingredients: insufficient stock.")
-            raise OutOfStockException()
+            message = "Insufficient ingredients to complete the operation."
+            logger.error(message)
+            raise OutOfStockException(message)
+
         for ingredient, quantity in recipe.items():
             self.stock[ingredient] -= quantity
         logger.info(f"Deducted ingredients: {recipe}")
 
+    @log_and_handle_errors("Failed to retrieve inventory stock")
     def get_stock(self) -> Dict[str, int]:
         """
         Return a copy of the current stock levels.
@@ -85,14 +89,14 @@ class Inventory:
         """
         return self.stock.copy()
 
+    @log_and_handle_errors("Failed to display inventory")
     def display_inventory(self) -> None:
         """
-        Log the current inventory stock and optionally print for user.
+        Log the current inventory stock.
         """
-        logger.info(self.__str__())
-        # Uncomment below line to also print inventory to user console
-        # print(self.__str__())
+        logger.info(str(self))
 
+    @log_and_handle_errors("Failed to generate inventory string representation")
     def __str__(self) -> str:
         """
         String representation of the current inventory.

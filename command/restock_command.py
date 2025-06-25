@@ -1,7 +1,7 @@
 from colorama import Fore, Style, init
 
 from command_core import BaseCommand, CommandContext
-from utils import setup_logger
+from utils import log_and_handle_errors, setup_logger  
 
 init(autoreset=True)
 
@@ -16,6 +16,7 @@ class RestockCommand(BaseCommand):
     and refreshes the menu availability accordingly.
     """
 
+    @log_and_handle_errors("Error executing restock command")
     def execute(self, args: str, context: CommandContext):
         """
         Execute the restock command.
@@ -32,4 +33,5 @@ class RestockCommand(BaseCommand):
         context.menu.refresh()
         logger.info("Restock command executed successfully.")
         print(
-            f"{Fore.GREEN}Restocking completed. Inventory is now full.{Style.RESET_ALL}")
+            f"{Fore.GREEN}Restocking completed. Inventory is now full.{Style.RESET_ALL}"
+        )

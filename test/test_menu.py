@@ -26,7 +26,6 @@ def test_drink_availability_initially_true():
     menu = Menu(inventory)
     menu_data = menu.get_menu()
 
-    # Initially, all drinks should be in stock
     for drink in menu_data:
         assert menu_data[drink]["in_stock"] is True
 
@@ -58,7 +57,7 @@ def test_all_drinks_available_with_full_stock():
 
 def test_drink_unavailable_when_ingredient_missing():
     inventory = Inventory()
-    inventory.stock["Whipped Cream"] = 0  # Used in "Caffe Mocha"
+    inventory.stock["Whipped Cream"] = 0  
 
     menu = Menu(inventory)
     menu_data = menu.get_menu()
@@ -70,7 +69,7 @@ def test_drink_unavailable_when_ingredient_missing():
 
 def test_partial_availability_of_drinks():
     inventory = Inventory()
-    inventory.stock["Cocoa"] = 0  # Only affects "Caffe Mocha"
+    inventory.stock["Cocoa"] = 0  
 
     menu = Menu(inventory)
     menu_data = menu.get_menu()
